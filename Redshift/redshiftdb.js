@@ -10,19 +10,15 @@ var client = {
 };
 
 // The values passed in to the options object will be the difference between a connection pool and raw connection
-var redshiftClient = new Redshift(client,{rawConnection: true})
-//console.log(redshiftClient)
-//var pg_query = "Select *;";
+var redshiftClient = new Redshift(client, {rawConnection: true})
+
+var pg_query = "CREATE TABLE Persons ( PersonID int, LastName varchar(255), FirstName varchar(255), Address varchar(255), City varchar(255) );";
  
-redshiftClient.connect(function(err){
-    if(err) throw err;
-    else{
-      redshiftClient.query('SELECT * FROM "Category"', {raw: true}, function(err, data){
-        if(err) throw err;
-        else{
-          console.log(data);
-          redshiftClient.close();
-        }
-      });
-    }
-  });
+redshiftClient.rawQuery(pg_query, {raw: true})
+.then(function(data){
+    console.log("Hello")
+  console.log(data); 
+})
+.catch(function(err){
+  console.log(err);
+});
