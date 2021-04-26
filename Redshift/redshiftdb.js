@@ -6,7 +6,7 @@ var client = {
   database: "dev",
   password: "Pratik24",
   port: "5439",
-  host: "redshift-cluster-1.cqpzrkddcxkb.us-east-2.redshift.amazonaws.com",
+  host: "redshift-cluster-1.cqpzrkddcxkb.us-east-2.redshift.amazonaws.com:5439/dev",
 };
 
 // The values passed in to the options object will be the difference between a connection pool and raw connection
